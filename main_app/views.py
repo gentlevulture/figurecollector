@@ -17,7 +17,7 @@ figures = [
   Figure('Batman - DC Artists Alley', 'DC Entertainment', 'Designed by nooligan. Loose.', 6)
 ]
 def home(request):
-  return HttpResponse('<h1>Hello Action Figure Collector</h1>')
+  return render(request, 'home.html')
 
 def about(request):
   return render(request, 'about.html')

@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.generic.edit import CreateView
 from .models import Figure
 
 # Create your views here.
@@ -16,3 +17,7 @@ def figures_index(request):
 def figures_detail(request, figure_id):
   figure = Figure.objects.get(id=figure_id)
   return render(request, 'figures/detail.html', { 'figure': figure })
+
+class FigureCreate(CreateView):
+  model = Figure
+  fields = '__all__'

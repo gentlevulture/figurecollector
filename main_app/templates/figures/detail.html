@@ -21,11 +21,15 @@
   <div class="figure-details">
     <h1>{{ figure.name }}</h1>
     {% if figure.scale > 0 %}
-      <h2>A {{ figure.scale }} inch scale {{ figure.brand }} action figure</h2>
+      <h2>A {{ figure.scale }} inch scale {{ figure.brand }} action figure.</h2>
     {% else %}
       <h2>A {{ figure.brand }} miniature.</h2>
     {% endif %}
     <p>{{ figure.description }}</p>
+    <div class="figure-actions">
+      <a href="{% url 'figures_update' figure.id %}" class="btn warn">Edit</a>
+      <a href="{% url 'figures_delete' figure.id %}" class="btn danger">Delete</a>
+    </div>
   </div>
 </section>
 

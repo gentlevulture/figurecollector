@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/figure-index.css' %}"/>
+{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+  <h1>Figure List</h1>
+  <img src="{% static 'images/' %}" alt="cool figure" />
+  <img src="{% static 'images/' %}" alt="happy figure" />
+  <img src="{% static 'images/' %}" alt="figure teacup" />
+  <img src="{% static 'images/' %}" alt="figure box" />
+</section>
+
+<section class="card-container">
+  {% for figure in figures %}
+    <div class="card">
+      <div class="card-content">
+        <div class="card-img-container">
+          <img 
+            src="{% static 'images/' %}" 
+            alt="skater figure"
+          >
+        </div>
+        <h2 class="card-title">{{ figure.name }}</h2>
+        {% if figure.scale > 0 %}
+          <p>A {{ figure.scale }} inch scale {{ figure.brand }}</p>
+        {% else %}
+          <p>A {{ figure.brand }} figure.</p>
+        {% endif %}
+        <p><small>{{ figure.description }}</small></p>
+      </div>
+    </div>
+  {% endfor %}
+</section>
+
+{% endblock %}

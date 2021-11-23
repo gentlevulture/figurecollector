@@ -18,12 +18,12 @@
 <section class="card-container">
   {% for figure in figures %}
     <div class="card">
-      <a href="/figures/{{ figure.id }}">
+      <a href="{% url 'figures_detail' figure.id %}">
         <div class="card-content">
           <div class="card-img-container">
             <img 
               src="{% static 'images/' %}" 
-              alt="skater figure"
+              alt="figure"
             >
           </div>
           <h2 class="card-title">{{ figure.name }}</h2>

@@ -1,7 +1,7 @@
 from django.db import models
 from django.urls import reverse
 
-CLEANS = (
+TECHNIQUES = (
   ("D", "Dry"),
   ("A", "Alcohol"),
   ("Q", "Q-Tip")
@@ -24,12 +24,13 @@ class Figure(models.Model):
 
 class Cleaning(models.Model):
   date = models.DateField("Cleaning Date")
-  clean = models.CharField(
+  technique = models.CharField(
     max_length=1,
-    choices=CLEANS,
-    default=CLEANS[0][0]
+    choices=TECHNIQUES,
+    default=TECHNIQUES[0][0]
   )
   figure = models.ForeignKey(Figure, on_delete=models.CASCADE)
-  
+
   def __str__(self):
-    return f"{self.get_clean_display()} on {self.date}"
+    return f"{self.get_technique_display()} on {self.date}"
+  

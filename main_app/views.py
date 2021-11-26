@@ -24,7 +24,6 @@ class FigureCreate(CreateView):
 
 class FigureUpdate(UpdateView):
   model = Figure
-  # Let's disallow the renaming of a figure by excluding the name field!
   fields = ['brand', 'description', 'scale']
 
 class FigureDelete(DeleteView):

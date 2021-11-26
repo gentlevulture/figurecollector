@@ -27,10 +27,42 @@
     {% endif %}
     <p>{{ figure.description }}</p>
     <div class="figure-actions">
-      <a href="{% url 'figures_update' figure.id %}" class="btn warn">Edit</a>
-      <a href="{% url 'figures_delete' figure.id %}" class="btn danger">Delete</a>
+      <a href="{% url 'figures_update' figure.id %}" class="btn warn">Change Details</a>
+      <a href="{% url 'figures_delete' figure.id %}" class="btn danger">Remove</a>
     </div>
   </div>
 </section>
+<div class="cleanings-comic-container">
+  <section class="cleanings">
+    <div class="subsection-title">
+      <h2>Cleanings</h2>
+      <img 
+        src="{% static 'images/Cloth.png' %}" 
+        alt="dry"
+      />
+      <img 
+        src="{% static 'images/Alcohol.png' %}"
+        alt="alcohol"
+      />
+      <img 
+        src="{% static 'images/Q-Tips.png' %}" 
+        alt="q-tip"
+      />
+    </div>
+    <table>
+      <thead>
+        <tr><th>Date</th><th>Technique</th></tr>
+      </thead>
+      <tbody>
+        {% for cleaning in figure.cleaning_set.all %}
+          <tr>
+            <td>{{cleaning.date}}</td>
+            <td>{{cleaning.get_technique_display}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+</div>
 
 {% endblock %}

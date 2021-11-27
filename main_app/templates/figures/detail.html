@@ -3,10 +3,20 @@
 
 {% block head %}
 <link 
+  href="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.css" 
+  rel="stylesheet" 
+/>
+<link rel="stylesheet" href="{% static 'css/mcdp.css' %}">
+<script 
+  src="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.js"
+>
+</script>
+<link 
   rel="stylesheet" 
   type="text/css" 
   href="{% static 'css/figure-detail.css' %}"
 />
+<script defer src="{% static 'js/figure-detail.js' %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -49,8 +59,10 @@
         alt="q-tip"
       />
     </div>
-    <h3>Add a Cleaning</h3>
+    <h3>Add Cleaning</h3>
+    
     <form
+      action="{% url 'add_cleaning' figure.id %}" 
       method="post" 
       class="subsection-content"
     >
@@ -59,6 +71,7 @@
       <button type="submit" class="btn submit">Add Cleaning</button>
     </form>
     <h3>Past Cleanings</h3>
+    {% if figure.cleaning_set.all.count %}
     <table>
       <thead>
         <tr><th>Date</th><th>Technique</th></tr>
@@ -72,6 +85,11 @@
         {% endfor %}
       </tbody>
     </table>
+  {% else %}
+		<div class="subsection-content">
+      <p>{{figure.name}} has never been cleaned</p>
+    </div>
+  {% endif %}
   </section>
 </div>
 

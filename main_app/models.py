@@ -20,7 +20,7 @@ class Figure(models.Model):
     
   
   def get_absolute_url(self):
-    return reverse('figures_details', kwargs={'figure_id': self.id})
+    return reverse('figures_detail', kwargs={'figure_id': self.id})
 
 class Cleaning(models.Model):
   date = models.DateField("Cleaning Date")
@@ -33,4 +33,6 @@ class Cleaning(models.Model):
 
   def __str__(self):
     return f"{self.get_technique_display()} on {self.date}"
-  
+
+  class Meta:
+    ordering = ['-date']

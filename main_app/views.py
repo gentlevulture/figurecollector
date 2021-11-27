@@ -51,3 +51,11 @@ class ComicList(ListView):
 
 class ComicDetail(DetailView):
   model = Comic
+
+class ComicUpdate(UpdateView):
+  model = Comic
+  fields = ['title', 'color']
+
+class ComicDelete(DeleteView):
+  model = Comic
+  success_url = '/comics/'

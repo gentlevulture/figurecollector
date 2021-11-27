@@ -27,6 +27,8 @@
     <a href="{% url 'comics_detail' comic.id %}">
       <div class="card-content">
         <h2>{{ comic.title }}</h2>
+        <p>Issue Num. {{ comic.issue }}</p>
+        <p>Drawn by {{ comic.artist }}</p>
         <p>Published by {{ comic.publisher }}</p>
       </div>
     </a>

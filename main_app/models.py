@@ -40,3 +40,4 @@ class Cleaning(models.Model):
 
   class Meta:
     ordering = ['-date']
+    

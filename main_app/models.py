@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from datetime import date
 
 TECHNIQUES = (
   ("D", "Dry"),
@@ -21,6 +22,9 @@ class Figure(models.Model):
   
   def get_absolute_url(self):
     return reverse('figures_detail', kwargs={'figure_id': self.id})
+
+  def clean_for_today(self):
+    return self.cleaning_set.filter(date=date.today()).count() >= len(TECHNIQUES)
 
 class Cleaning(models.Model):
   date = models.DateField("Cleaning Date")

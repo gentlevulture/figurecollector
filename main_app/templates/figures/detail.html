@@ -30,8 +30,8 @@
   </div>
   <div class="figure-details">
     <h1>{{ figure.name }}</h1>
-    {% if figure.scale > 0 %}
-      <h2>{{ figure.scale }} inch scale {{ figure.brand }} action figure.</h2>
+    {% if figure.scale > 2 %}
+      <h2>{{ figure.scale }} inch scale {{ figure.brand }} figure.</h2>
     {% else %}
       <h2>A {{ figure.brand }} miniature.</h2>
     {% endif %}

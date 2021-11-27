@@ -32,7 +32,7 @@ def add_cleaning(request, figure_id):
 
 class FigureCreate(CreateView):
   model = Figure
-  fields = '__all__'
+  fields = ['name', 'brand', 'description', 'scale']
 
 class FigureUpdate(UpdateView):
   model = Figure

@@ -28,10 +28,10 @@
             >
           </div>
           <h2 class="card-title">{{ figure.name }}</h2>
-          {% if figure.scale > 0 %}
-            <p>{{ figure.scale }} inch scale {{ figure.brand }} action figure.</p>
+          {% if figure.scale > 2 %}
+            <p>{{ figure.scale }} inch scale {{ figure.brand }} figure.</p>
           {% else %}
-            <p>A {{ figure.brand }} action figure.</p>
+            <p>A {{ figure.brand }} miniature.</p>
           {% endif %}
           <p><small>{{ figure.description }}</small></p>
         </div>

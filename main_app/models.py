@@ -40,3 +40,16 @@ class Cleaning(models.Model):
 
   class Meta:
     ordering = ['-date']
+
+class Comic(models.Model):
+  artist = models.CharField(max_length=25)
+  title = models.CharField(max_length=50)
+  publisher = models.CharField(max_length=25)
+  issue = models.IntegerField()
+  color = models.CharField(max_length=20)
+
+  def __str__(self):
+    return self.title
+
+  def get_absolute_url(self):
+    return reverse('comics_detail', kwargs={'pk': self.id})

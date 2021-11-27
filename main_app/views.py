@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Figure
+from .models import Figure, Comic
 from .forms import CleaningForm
+from django.views.generic import ListView, DetailView
+
 
 # Create your views here.
 
@@ -39,3 +41,13 @@ class FigureUpdate(UpdateView):
 class FigureDelete(DeleteView):
   model = Figure
   success_url = '/figures/'
+
+class ComicCreate(CreateView):
+  model = Comic
+  fields = '__all__'
+
+class ComicList(ListView):
+  model = Comic
+
+class ComicDetail(DetailView):
+  model = Comic

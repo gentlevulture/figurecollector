@@ -9,5 +9,8 @@ urlpatterns = [
   path('figures/create/', views.FigureCreate.as_view(), name='figures_create'),
   path('figures/<int:pk>/update/', views.FigureUpdate.as_view(), name='figures_update'),
   path('figures/<int:pk>/delete/', views.FigureDelete.as_view(), name='figures_delete'),
-    path('figures/<int:figure_id>/add_cleaning/', views.add_cleaning, name='add_cleaning'),
+  path('figures/<int:figure_id>/add_cleaning/', views.add_cleaning, name='add_cleaning'),
+  path('comics/create/', views.ComicCreate.as_view(), name='comics_create'),
+  path('comics/<int:pk>/', views.ComicDetail.as_view(), name='comics_detail'),
+  path('comics/', views.ComicList.as_view(), name='comics_index'),
 ]

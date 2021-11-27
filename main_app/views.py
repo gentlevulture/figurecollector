@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Figure
+from .forms import CleaningForm
 
 # Create your views here.
 
@@ -16,7 +17,8 @@ def figures_index(request):
 
 def figures_detail(request, figure_id):
   figure = Figure.objects.get(id=figure_id)
-  return render(request, 'figures/detail.html', { 'figure': figure })
+  cleaning_form = CleaningForm()
+  return render(request, 'figures/detail.html', { 'figure': figure, 'cleaning_form': cleaning_form })
 
 class FigureCreate(CreateView):
   model = Figure

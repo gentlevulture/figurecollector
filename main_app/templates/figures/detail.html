@@ -49,6 +49,16 @@
         alt="q-tip"
       />
     </div>
+    <h3>Add a Cleaning</h3>
+    <form
+      method="post" 
+      class="subsection-content"
+    >
+      {% csrf_token %}
+      {{ cleaning_form.as_p }}
+      <button type="submit" class="btn submit">Add Cleaning</button>
+    </form>
+    <h3>Past Cleanings</h3>
     <table>
       <thead>
         <tr><th>Date</th><th>Technique</th></tr>

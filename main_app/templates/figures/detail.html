@@ -66,6 +66,11 @@
       method="post" 
       class="subsection-content"
     >
+      {% if figure.clean_for_today %}
+        <p class="clean">{{figure.name}} has been cleaned with all techniques today</p>
+      {% else %}
+        <p class="unclean">{{figure.name}} might be unclean</p>
+      {% endif %}
       {% csrf_token %}
       {{ cleaning_form.as_p }}
       <button type="submit" class="btn submit">Add Cleaning</button>

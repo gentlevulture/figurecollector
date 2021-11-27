@@ -7,7 +7,7 @@
   <h1>Remove Comic?</h1>
   <img src="{% static 'i' %}" alt="A figure using a computer"/>
 </div>
-<h2>Are you sure you want to remove {{ object.title }}?</h2>
+<h2>Are you sure you want to remove {{ object.title }} issue {{ comic.issue }}?</h2>
 
 <form action="" method="POST" class="form">
   {% csrf_token %}

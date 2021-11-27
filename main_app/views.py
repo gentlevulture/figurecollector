@@ -19,8 +19,9 @@ def figures_index(request):
 
 def figures_detail(request, figure_id):
   figure = Figure.objects.get(id=figure_id)
+  comics_figure_doesnt_have = Comic.objects.exclude(id__in = figure.comics.all().values_list('id'))
   cleaning_form = CleaningForm()
-  return render(request, 'figures/detail.html', { 'figure': figure, 'cleaning_form': cleaning_form })
+  return render(request, 'figures/detail.html', { 'figure': figure, 'cleaning_form': cleaning_form, 'comics': comics_figure_doesnt_have })
 
 def add_cleaning(request, figure_id):
   form = CleaningForm(request.POST)
@@ -59,3 +60,7 @@ class ComicUpdate(UpdateView):
 class ComicDelete(DeleteView):
   model = Comic
   success_url = '/comics/'
+
+def assoc_comic(request, figure_id, comic_id):
+  Figure.objects.get(id=figure_id).comics.add(comic_id)
+  return redirect('figures_detail', figure_id=figure_id)

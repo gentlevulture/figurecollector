@@ -103,7 +103,6 @@
   <img src="{% static 'images/DC-Black-Label.png' %}" alt="DC Black Label" /> 
   <img src="{% static 'images/DC.png' %}" alt="DC Comics" />
   <img src="{% static 'images/Empire-Comics.png' %}" alt="Empire Comics Vault" />
-  <img src="{% static 'images/Marvel-Comics.png' %}" alt="Marvel Comics" />
     </div>
     <h3>{{ figure.name }}'s Inspiration</h3>
     <div class="subsection-content">
@@ -115,7 +114,7 @@
               style="background-color: {{ comic.color }}"
             ></div>
             <a href="{% url 'comics_detail' comic.id %}">
-              <p>Art references in {{ comic.title }} issue {{ comic.issue }}</p>
+              <p>Art references from {{ comic.title }}: Issue {{ comic.issue }}</p>
             </a>
           </div>
         {% endfor %}
@@ -123,8 +122,29 @@
         <p class="no-comics">{{figure.name}} doesn't have any direct comic inspirations</p>
       {% endif %}
     </div>
-    <h3>Available comics</h3>
+    <h3>Art References by Issue</h3>
     <div class="subsection-content">
+      {% if comics.count %}
+        {% for comic in comics.all %}
+          <div class="comic-container">
+            <div 
+              class="color-block"
+              style="background-color: {{ comic.color }}"
+            ></div>
+            <a href="{% url 'comics_detail' comic.id %}">
+              <p>{{ comic.title}}: Issue {{ comic.issue }}</p>
+            </a>
+            <form action="{% url 'assoc_comic' figure.id comic.id %}" method="post">
+              {% csrf_token %}
+              <button type="submit" class="btn submit">Add comic art reference</button>
+            </form>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p class="all-comics">
+          {{figure.name}} has references in every single comic uploaded. Tight.
+        </p>
+      {% endif %}
     </div>
   </section>
 </div>

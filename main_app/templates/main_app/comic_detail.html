@@ -15,7 +15,9 @@
   <div class="card-bg" style="background-color: {{ comic.color }}"></div>
   <div class="card-content">
     <h2>{{ comic.title }}</h2>
-    <p>Published by {{ comic.publisher }}</p>
+      <p>Issue Num. {{ comic.issue }}</p>
+      <p>Drawn by {{ comic.artist }}</p>
+      <p>Published by {{ comic.publisher }}</p>
   </div>
 </div>
 <a href="{% url 'comics_update' comic.id %}" class="btn warn">Edit</a>

@@ -75,7 +75,7 @@
       {{ cleaning_form.as_p }}
       <button type="submit" class="btn submit">Add Cleaning</button>
     </form>
-    <h3>Past Cleanings</h3>
+    <h3>Cleanings</h3>
     {% if figure.cleaning_set.all.count %}
     <table>
       <thead>
@@ -96,6 +96,38 @@
     </div>
   {% endif %}
   </section>
+    <section class="comics">
+    <div class="subsection-title">
+      <h2>Comics</h2>
+  <img src="{% static 'images/Image-Comics.png' %}" alt="Image Comics" />
+  <img src="{% static 'images/DC-Black-Label.png' %}" alt="DC Black Label" /> 
+  <img src="{% static 'images/DC.png' %}" alt="DC Comics" />
+  <img src="{% static 'images/Empire-Comics.png' %}" alt="Empire Comics Vault" />
+  <img src="{% static 'images/Marvel-Comics.png' %}" alt="Marvel Comics" />
+    </div>
+    <h3>{{ figure.name }}'s Inspiration</h3>
+    <div class="subsection-content">
+      {% if figure.comics.count %}
+        {% for comic in figure.comics.all %}
+          <div class="comic-container">
+            <div 
+              class="color-block"
+              style="background-color: {{ comic.color }}"
+            ></div>
+            <a href="{% url 'comics_detail' comic.id %}">
+              <p>Art references in {{ comic.title }} issue {{ comic.issue }}</p>
+            </a>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p class="no-comics">{{figure.name}} doesn't have any direct comic inspirations</p>
+      {% endif %}
+    </div>
+    <h3>Available comics</h3>
+    <div class="subsection-content">
+    </div>
+  </section>
+</div>
 </div>
 
 {% endblock %}

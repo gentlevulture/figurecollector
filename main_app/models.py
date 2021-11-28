@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from datetime import date
+from django.contrib.auth.models import User
 
 TECHNIQUES = (
   ("D", "Dry"),
@@ -29,6 +30,7 @@ class Figure(models.Model):
   description = models.TextField(max_length=100)
   scale = models.IntegerField()
   comics = models.ManyToManyField(Comic)
+  user = models.ForeignKey(User, on_delete=models.CASCADE)
 
   def __str__(self):
     return self.name

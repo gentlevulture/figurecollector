@@ -27,13 +27,20 @@
       </a>
     </div>
     <nav>
-      <ul>
-        <li><a href="{% url 'figures_index' %}">All Figures</a></li>
-        <li><a href="{% url 'comics_index' %}">All Comics</a></li>
-        <li><a href="{% url 'figures_create' %}">Add a Figure</a></li>
-        <li><a href="{% url 'comics_create' %}">Add a Comic</a></li>
-        <li><a href="{% url 'about' %}">About</a></li>
-      </ul>
+        <ul>
+          {% if user.is_authenticated %}
+            <li><a href="{% url 'figures_index' %}">All Figures</a></li>
+            <li><a href="{% url 'comics_index' %}">All Comics</a></li>
+            <li><a href="{% url 'figures_create' %}">Add a Figure</a></li>
+            <li><a href="{% url 'comics_create' %}">Add a Comic</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'logout' %}">Log out</a></li>
+          {% else %}
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'home' %}">Login</a></li>
+            <li><a href="{% url 'signup' %}">Sign Up</a></li>
+          {% endif %}
+        </ul>
     </nav>
   </header>
   <main>
